@@ -1,9 +1,12 @@
 ﻿using System;
+using RPG;
 
 class Program
 {
     public static void Main(string[] args)
     {
+        Console.CursorVisible = false;
+
         List<IEntity> entities = new List<IEntity>();
         var field = new Map();
         var nameExtractor = new NameExtractor();
@@ -23,7 +26,6 @@ class Program
             if (Console.KeyAvailable)
             {
                 char key = Console.ReadKey().KeyChar;
-                Console.Clear();
                 Levi.Turn(key);
                 field.Add(entities);
                 field.Print();
@@ -74,6 +76,7 @@ public class Map
     private const int WIDTH = 20;
     private const int HEIGHT = 20;
     char[,] field = new char[WIDTH, HEIGHT];
+    ConsoleBuffer console = new ConsoleBuffer();
     private void Init()
     {
         for (int i = 0; i < WIDTH; i++)
@@ -94,14 +97,16 @@ public class Map
     }
     public void Print()
     {
+        console.Clear();
         for (int i = 0; i < WIDTH; i++)
         {
             for (int j = 0; j < HEIGHT; j++)
             {
-                Console.Write(field[i, j]);
+                console.Write(j,i,field[i, j], ConsoleColor.Blue);
             }
-            Console.Write("\n");
+            //Console.Write("\n");
         }
+        console.Print();
     }
 
 }
