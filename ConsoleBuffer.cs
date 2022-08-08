@@ -65,7 +65,7 @@ namespace RPG
 
         private const ConsoleColor BACKGROUND_DEFAULT_COLOR = ConsoleColor.Black;
         private const ConsoleColor FOREGROUND_DEFAULT_COLOR = ConsoleColor.Gray;
-        private const char DEFAULT_CHARACTER = '-';
+        private const char DEFAULT_CHARACTER = ' ';
 
         public static readonly short Width = Convert.ToInt16(Console.LargestWindowWidth);
         public static readonly short Height = Convert.ToInt16(Console.LargestWindowHeight);
@@ -94,7 +94,7 @@ namespace RPG
         public void Write(int x, int y,
             char symbol,
             ConsoleColor? foregroundColor,
-            ConsoleColor? backgroundColor)
+            ConsoleColor? backgroundColor = ConsoleColor.Gray)
         {
             if (x < 0 || x >= Width)
                 throw new ArgumentOutOfRangeException(nameof(x));
