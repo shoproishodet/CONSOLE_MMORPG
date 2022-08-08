@@ -3,7 +3,7 @@
     private const int MAX_HEALTH = 500;
     private const int START_DAMAGE = 20;
     private const float ARMOR = 0.2f;
-    public char Icon { get => 'O'; }
+    public char Icon => 'O';
     public Coordinate Position { get; private set; }
     public string Name { get; private set; }
     public int Health { get; private set; } = MAX_HEALTH;

@@ -4,14 +4,14 @@
     {
         Console.CursorVisible = false;
 
-        List<IEntity> entities = new List<IEntity>();
+        var entities = new List<IEntity>();
         var field = new Map();
         var nameExtractor = new NameExtractor();
 
         var Levi = new Dude(nameExtractor.GetNameFromConsole());
         entities.Add(Levi);
 
-        var GuulDan = new Ork(nameExtractor.GiveRandomeName());
+        var GuulDan = new Ork(nameExtractor.GiveRandomName());
         entities.Add(GuulDan);
 
         field.Add(entities);
