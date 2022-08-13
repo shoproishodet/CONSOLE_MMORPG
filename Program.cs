@@ -1,20 +1,17 @@
-﻿using System;
-using RPG;
-
-class Program
+﻿class Program
 {
     public static void Main(string[] args)
     {
         Console.CursorVisible = false;
 
-        List<IEntity> entities = new List<IEntity>();
+        var entities = new List<IEntity>();
         var field = new Map();
         var nameExtractor = new NameExtractor();
 
         var Levi = new Dude(nameExtractor.GetNameFromConsole());
         entities.Add(Levi);
 
-        var GuulDan = new Ork(nameExtractor.GiveRandomeName());
+        var GuulDan = new Ork(nameExtractor.GiveRandomName());
         entities.Add(GuulDan);
 
         field.Add(entities);
@@ -43,6 +40,7 @@ class Program
         }
         Console.WriteLine($"{puncher.Name} just lookin");
     }
+    
     public static void Fight(IEntity entityFirst, IEntity entitySecond)
     {
         while (entityFirst.IsAlive && entitySecond.IsAlive)
@@ -68,56 +66,5 @@ class Program
         {
             Console.WriteLine($"{entitySecond.Name} kill {entityFirst.Name}");
         }
-    }
-}
-
-public class Map
-{
-    private const int WIDTH = 20;
-    private const int HEIGHT = 20;
-    char[,] field = new char[WIDTH, HEIGHT];
-    ConsoleBuffer console = new ConsoleBuffer();
-    private void Init()
-    {
-        for (int i = 0; i < WIDTH; i++)
-        {
-            for (int j = 0; j < HEIGHT; j++)
-            {
-                field[i,j] = '-';
-            }
-        }
-    }
-    public void Add(List<IEntity> entities)
-    {
-        Init();
-        foreach (IEntity entity in entities)
-        {
-            field[entity.Position.y, entity.Position.x] = entity.Icon;
-        }
-    }
-    public void Print()
-    {
-        console.Clear();
-        for (int i = 0; i < WIDTH; i++)
-        {
-            for (int j = 0; j < HEIGHT; j++)
-            {
-                console.Write(j,i,field[i, j], ConsoleColor.Blue);
-            }
-            //Console.Write("\n");
-        }
-        console.Print();
-    }
-
-}
-public struct Coordinate
-{
-    public int x;
-    public int y;
-    public static Coordinate Zero => new Coordinate(0, 0);
-    public Coordinate(int x = 0, int y = 0)
-    {
-        this.x = x;
-        this.y = y;
     }
 }
