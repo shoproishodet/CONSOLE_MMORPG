@@ -5,6 +5,7 @@
 
     public char Icon => 'Z';
     public Coordinate Position { get; private set; }
+    public ConsoleColor IconColor => ConsoleColor.Green;
     public int Health { get; private set; } = MAX_HEALTH;
     public int Damage => START_DAMAGE;
     public bool IsAlive => Health > 0;
