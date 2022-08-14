@@ -1,6 +1,7 @@
-﻿class NameExtractor
+﻿using System;
+class NameExtractor
 {
-    string[] names = File.ReadAllLines(@"D:\C#\MMORPG\npc_names.txt");
+    string[] names = MMORPG.Properties.Resources.npc_names.Split('\n');
     Random random = new Random();
 
     public string GiveRandomName()

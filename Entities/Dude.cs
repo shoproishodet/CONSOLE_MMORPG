@@ -1,4 +1,4 @@
-﻿class Dude : IEntity, IHaveArmor, IHaveDamage, ICanEat
+﻿public class Dude : IEntity, IHaveArmor, IHaveDamage, ICanEat
 {
     private const int MAX_HEALTH = 200;
     private const int START_DAMAGE = 50;
@@ -7,6 +7,7 @@
     private int penisLength = 20;
 
     public char Icon => 'D';
+    public ConsoleColor IconColor => ConsoleColor.Blue;
     public bool IsAlive => Health > 0;
     public Coordinate Position { get; private set; }
     public int Health { get; protected set; } = MAX_HEALTH;
@@ -34,10 +35,10 @@
     {
         switch (key)
         {
-            case 'w':
+            case 's':
                 Position = new Coordinate(Position.x, Position.y + 1);
                 break;
-            case 's':
+            case 'w':
                 Position = new Coordinate(Position.x, Position.y - 1);
                 break;
             case 'a':

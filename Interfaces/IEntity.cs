@@ -5,5 +5,6 @@
     bool IsAlive { get; }
     Coordinate Position { get; }
     char Icon { get; }
+    ConsoleColor IconColor { get; }
     public void Hurt(int damage);
 }

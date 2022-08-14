@@ -5,6 +5,7 @@
     private const float ARMOR = 0.2f;
     public char Icon => 'O';
     public Coordinate Position { get; private set; }
+    public ConsoleColor IconColor => ConsoleColor.Red;
     public string Name { get; private set; }
     public int Health { get; private set; } = MAX_HEALTH;
     public int Damage { get; private set; } = START_DAMAGE;

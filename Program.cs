@@ -3,19 +3,17 @@
     public static void Main(string[] args)
     {
         Console.CursorVisible = false;
-
         var entities = new List<IEntity>();
-        var field = new Map();
         var nameExtractor = new NameExtractor();
 
         var Levi = new Dude(nameExtractor.GetNameFromConsole());
         entities.Add(Levi);
+        var field = new Camera(Levi);
 
         var GuulDan = new Ork(nameExtractor.GiveRandomName());
         entities.Add(GuulDan);
 
-        field.Add(entities);
-        field.Print();
+        field.Print(entities);
         //Fight(Levi, GuulDan);
 
         while(true)
@@ -24,8 +22,7 @@
             {
                 char key = Console.ReadKey().KeyChar;
                 Levi.Turn(key);
-                field.Add(entities);
-                field.Print();
+                field.Print(entities);
             }
         }
     }
